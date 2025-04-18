@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}Detalhe - {{ post.titulo }}{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2 class="card-title">{{ post.titulo }}</h2>
+                <p class="card-text">
+                    <strong>Status:</strong>
+                    <span class="badge bg-info">{{ post.get_status_display }}</span>
+                </p>
+                <p class="card-text">
+                    <strong>Autor:</strong> {{ post.autor }}
+                </p>
+                <p class="card-text">
+                    <strong>Publicado em:</strong> {{ post.data_publicacao|date:"d/m/Y H:i" }}
+                </p>
+                <hr>
+                <p class="card-text">{{ post.conteudo }}</p>
+                <a href="{% url 'lista_posts' %}" class="btn btn-primary">Voltar para a Lista</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

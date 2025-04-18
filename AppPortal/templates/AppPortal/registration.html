@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+
+{% load widget_tweaks %}
+
+
+{% block title %}Registro de Usuário{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Registro de Usuário</h1>
+        {% if messages %}
+            <div class="alert alert-success">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+           
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Nome de Usuário</label>
+                {{ form.username|add_class:"form-control" }}
+                <!-- Exibindo erros do campo de nome de usuário -->
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+           
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email|add_class:"form-control" }}
+                <!-- Exibindo erros do campo de email -->
+                {% if form.email.errors %}
+                    <div class="text-danger">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+           
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Senha</label>
+                {{ form.password|add_class:"form-control" }}
+                <small class="form-text text-muted">
+                    A senha deve ter pelo menos 8 caracteres, conter um número e uma letra maiúscula.
+                </small>
+                <!-- Exibindo erros do campo de senha -->
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+           
+            <div class="mb-3">
+                <label for="id_password_confirm" class="form-label">Confirmar Senha</label>
+                {{ form.password_confirm|add_class:"form-control" }}
+                <!-- Exibindo erros do campo de confirmação de senha -->
+                {% if form.password_confirm.errors %}
+                    <div class="text-danger">
+                        {% for error in form.password_confirm.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+{% endblock %}

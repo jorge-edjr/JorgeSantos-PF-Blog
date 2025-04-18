@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block title %}Confirmar Deletação{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Você tem certeza que deseja deletar o post "{{ post.titulo }}"?</h2>
+
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Deletar</button>
+            <a href="{% url 'lista_posts_cvb' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

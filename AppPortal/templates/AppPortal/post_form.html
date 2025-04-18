@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% load widget_tweaks %}
+
+
+{% block title %}Criar Novo Post CVB{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="mb-4">Criar Novo Post</h2>
+            <form method="post">
+                {% csrf_token %}
+               
+                <div class="mb-3">
+                    {{ form.titulo.label_tag }}
+                    {{ form.titulo|add_class:"form-control" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.conteudo.label_tag }}
+                    {{ form.conteudo|add_class:"form-control" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.status.label_tag }}
+                    {{ form.status|add_class:"form-select" }}
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Criar Post</button>
+                <a href="{% url 'lista_posts_cvb' %}" class="btn btn-secondary">Voltar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

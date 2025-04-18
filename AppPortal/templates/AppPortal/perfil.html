@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Perfil de {{ user.first_name }} {{ user.last_name }}</h3>
+                </div>
+                <div class="card-body">
+                    {% if user.avatar and user.avatar.imagem %}
+                        <img src="{{ user.avatar.imagem.url }}" class="rounded-circle mb-3" width="150" height="150" alt="Avatar">
+                    {% else %}
+                        <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Sem Avatar">
+                    {% endif %}
+                    <p><strong>Usuário:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'editar_perfil' %}" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </a>
+                    <a href="{% url 'editar_avatar' %}" class="btn btn-secondary">
+                        <i class="fas fa-image"></i> Alterar Avatar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

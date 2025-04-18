@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% load widget_tweaks %}
+
+
+{% block title %}Pesquisa de Estudantes{% endblock %}
+
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Pesquisar Estudantes</h2>
+
+
+    <form method="GET" class="row g-3">
+        <div class="col-md-8">
+            {{ form.termo }}
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+    </form>
+
+
+    {% if resultados is not None %}
+        <div class="mt-4">
+            <h3>Resultados:</h3>
+            {% if resultados %}
+                <ul class="list-group">
+                    {% for estudante in resultados %}
+                        <li class="list-group-item">
+                            <strong>{{ estudante.nome }} {{ estudante.sobrenome }}</strong> - {{ estudante.email }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-danger mt-3">Nenhum estudante encontrado.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
