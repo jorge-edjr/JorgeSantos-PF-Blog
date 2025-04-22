@@ -104,6 +104,11 @@ def atualizar_post(request, id):
 @login_required
 def deletar_post(request, id):
     post = get_object_or_404(Post, id=id)
+
+
+    # Garantir que apenas o autor pode deletar o post
+    if post.autor != request.user:
+        return redirect('lista_posts')  # Redireciona caso não seja o autor
    
     if request.method == "POST":
         post.delete()
