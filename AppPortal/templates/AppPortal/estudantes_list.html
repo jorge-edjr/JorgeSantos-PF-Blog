@@ -7,8 +7,8 @@
 {% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">Lista de Leitores</h1>
-        <a href="{% url 'criar_estudante' %}" class="btn btn-success mb-3">Criar Novo Estudante</a>
-        <a href="{% url 'pesquisa_estudante' %}" class="btn btn-success mb-3">Pesquisar Estudante</a>
+        <a href="{% url 'criar_estudante' %}" class="btn btn-success mb-3">Criar Novo Leitor</a>
+        <a href="{% url 'pesquisa_estudante' %}" class="btn btn-success mb-3">Pesquisar Leitor</a>
         
         {% if estudantes %}
             <ul class="list-group">
@@ -21,7 +21,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="alert alert-warning">Nenhum estudante encontrado.</p>
+            <p class="alert alert-warning">Nenhum leitor encontrado.</p>
         {% endif %}
     </div>
 {% endblock %}
